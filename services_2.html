@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — MEDIA REFLECTION</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0D0D0D;color:#F5EDE3;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+a{text-decoration:none}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 80px;height:80px;background:rgba(13,13,13,0.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(245,237,227,0.07)}
+.logo img{height:48px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.92;transition:opacity 0.2s}
+.logo img:hover{opacity:1}
+.nav-links{display:flex;gap:40px}
+.nav-link{font-size:14px;color:rgba(245,237,227,0.5);letter-spacing:0.01em;transition:color 0.2s}
+.nav-link:hover{color:rgba(245,237,227,0.9)}
+.nav-link.active{color:#C4638C}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all 0.2s ease;letter-spacing:0.02em;border:none}
+.btn-primary{background:#810B38;color:#F5EDE3;border:1.5px solid #810B38;padding:10px 24px;border-radius:7px;font-size:14px}
+.btn-primary:hover{background:#5A0826;box-shadow:0 6px 20px rgba(129,11,56,0.35);transform:translateY(-1px)}
+.btn-secondary{background:transparent;color:#F5EDE3;border:1.5px solid rgba(245,237,227,0.38);padding:10px 24px;border-radius:7px;font-size:14px}
+.btn-secondary:hover{background:rgba(129,11,56,0.12);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:rgba(245,237,227,0.55);border:1px solid rgba(245,237,227,0.1);padding:10px 24px;border-radius:7px;font-size:14px}
+.btn-sm{padding:6px 16px;font-size:12px;border-radius:5px}
+.btn-lg{padding:14px 32px;font-size:16px;border-radius:9px}
+.hero{padding:120px 80px 80px;position:relative;overflow:hidden;min-height:60vh;display:flex;align-items:center}
+.hero-glow{position:absolute;top:0;right:0;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(129,11,56,0.14) 0%,transparent 65%);pointer-events:none}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.eyebrow-line{width:32px;height:1px;background:#810B38}
+.eyebrow-text{font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#C4638C}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,80px);font-weight:500;line-height:1.08;margin:0 0 24px;letter-spacing:-0.01em}
+.hero-title em{color:#810B38;font-style:italic}
+.hero-sub{font-size:17px;color:rgba(245,237,227,0.52);line-height:1.85;max-width:560px;margin:0 0 48px}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap}
+.hero-tag{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,237,227,0.5);border:1px solid rgba(245,237,227,0.1);padding:6px 16px;border-radius:20px}
+.filter-bar{padding:0 80px 64px;display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.06em;padding:8px 20px;border-radius:20px;border:1px solid rgba(245,237,227,0.12);background:transparent;color:rgba(245,237,227,0.5);cursor:pointer;transition:all 0.2s}
+.filter-btn:hover{color:#F5EDE3;border-color:rgba(245,237,227,0.3)}
+.filter-btn.active{background:#810B38;color:#F5EDE3;border-color:#810B38}
+.services-grid{padding:0 80px 120px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(245,237,227,0.04)}
+.service-card{background:#0D0D0D;padding:48px 40px;position:relative;overflow:hidden;transition:background 0.3s ease;border-top:2px solid transparent}
+.service-card:hover{background:#131313;border-top-color:#810B38}
+.service-card-number{font-family:'Playfair Display',serif;font-size:11px;color:rgba(245,237,227,0.2);letter-spacing:0.15em;margin-bottom:32px}
+.service-icon-wrap{width:52px;height:52px;border-radius:12px;background:rgba(129,11,56,0.12);border:1px solid rgba(129,11,56,0.2);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:24px}
+.service-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#810B38;background:rgba(129,11,56,0.1);padding:3px 10px;border-radius:20px;margin-bottom:16px}
+.service-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:500;color:#F5EDE3;margin:0 0 14px;line-height:1.25}
+.service-desc{font-size:13px;color:rgba(245,237,227,0.48);line-height:1.85;margin:0 0 28px}
+.service-features{list-style:none;margin:0 0 32px}
+.service-features li{font-size:12px;color:rgba(245,237,227,0.4);padding:6px 0;border-bottom:1px solid rgba(245,237,227,0.05);display:flex;align-items:center;gap:8px}
+.service-features li::before{content:'';width:4px;height:4px;border-radius:50%;background:#810B38;flex-shrink:0}
+.service-features li:last-child{border-bottom:none}
+.service-link{font-size:12px;font-weight:500;color:#C4638C;display:flex;align-items:center;gap:6px;transition:gap 0.2s,color 0.2s}
+.service-card:hover .service-link{color:#F5EDE3;gap:10px}
+.process{padding:80px;background:rgba(245,237,227,0.02);border-top:1px solid rgba(245,237,227,0.06);border-bottom:1px solid rgba(245,237,227,0.06)}
+.process-title{font-family:'Playfair Display',serif;font-size:13px;font-weight:400;color:rgba(245,237,227,0.3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:48px;text-align:center}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.process-step{padding:0 32px;text-align:center;position:relative}
+.process-step:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:20px;font-size:16px;color:rgba(245,237,227,0.15)}
+.process-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:500;color:rgba(129,11,56,0.3);line-height:1;margin-bottom:12px}
+.process-step-title{font-size:13px;font-weight:500;color:#F5EDE3;margin-bottom:8px}
+.process-step-desc{font-size:12px;color:rgba(245,237,227,0.4);line-height:1.7}
+.cta{padding:120px 80px;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(129,11,56,0.12) 0%,transparent 70%);pointer-events:none}
+.cta-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#C4638C;background:rgba(129,11,56,0.1);border:1px solid rgba(129,11,56,0.2);padding:6px 16px;border-radius:20px;margin-bottom:32px}
+.cta-dot{width:6px;height:6px;border-radius:50%;background:#810B38;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,64px);font-weight:500;line-height:1.12;margin:0 0 24px;color:#F5EDE3;position:relative}
+.cta-title em{color:#810B38;font-style:italic}
+.cta-sub{font-size:16px;color:rgba(245,237,227,0.48);max-width:480px;margin:0 auto 48px;line-height:1.8;position:relative}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative}
+footer{border-top:1px solid rgba(245,237,227,0.06);padding:64px 80px 40px}
+.footer-top{display:flex;gap:80px;margin-bottom:64px}
+.footer-brand{flex:0 0 280px}
+.footer-logo img{height:56px;width:auto;filter:brightness(0) invert(1);opacity:0.7;margin-bottom:12px;display:block}
+.footer-tagline{font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:#C4638C;margin-bottom:12px}
+.footer-desc{font-size:12px;color:rgba(245,237,227,0.38);line-height:1.85;margin:0 0 18px}
+.footer-city{font-size:11px;color:#810B38}
+.footer-links{display:flex;gap:64px;flex:1}
+.footer-group-lbl{font-size:10px;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:rgba(245,237,227,0.28);margin-bottom:20px}
+.footer-link{display:block;font-size:12px;color:rgba(245,237,227,0.42);margin-bottom:11px;transition:color 0.2s}
+.footer-link:hover{color:#F5EDE3}
+.footer-bottom{border-top:1px solid rgba(245,237,227,0.06);padding-top:24px;display:flex;justify-content:space-between}
+.footer-copy{font-size:11px;color:rgba(245,237,227,0.22)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px">
+    <img src="https://mahmoed-alhadadd.github.io/mr-preview/my%20new%20logo.png" alt="Media Reflection" style="height:44px;width:auto;filter:brightness(0) invert(1);opacity:0.92">
+    <span style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;letter-spacing:0.05em;color:#F5EDE3;line-height:1.2">MEDIA<br>REFLECTION</span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Work</a>
+    <a class="nav-link active" href="#">Services</a>
+    <a class="nav-link" href="#">About</a>
+    <a class="nav-link" href="#">Contact</a>
+  </div>
+  <button class="btn btn-primary btn-sm">Book a Session</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div style="max-width:780px;position:relative;z-index:1">
+    <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">What We Offer</span></div>
+    <h1 class="hero-title">Every service,<br>crafted with <em>purpose</em></h1>
+    <p class="hero-sub">From a single brand shoot to a full creative partnership — everything a luxury brand needs to tell its story with clarity and impact.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Videography</span><span class="hero-tag">Photography</span><span class="hero-tag">Branding</span>
+      <span class="hero-tag">Graphic Design</span><span class="hero-tag">Marketing</span><span class="hero-tag">Livestreaming</span><span class="hero-tag">Events</span>
+    </div>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCards('all',this)">All Services</button>
+  <button class="filter-btn" onclick="filterCards('visual',this)">Visual Production</button>
+  <button class="filter-btn" onclick="filterCards('brand',this)">Brand & Design</button>
+  <button class="filter-btn" onclick="filterCards('event',this)">Events & Live</button>
+  <button class="filter-btn" onclick="filterCards('strategy',this)">Strategy</button>
+</div>
+
+<div class="services-grid">
+  <div class="service-card" data-category="visual">
+    <div class="service-card-number">01</div><div class="service-icon-wrap">🎬</div>
+    <div class="service-tag">Visual Production</div><h3 class="service-title">Cinematic Videography</h3>
+    <p class="service-desc">High-end video production for brands, events, and campaigns that captivate and convert.</p>
+    <ul class="service-features"><li>Brand & commercial films</li><li>Corporate documentaries</li><li>Event highlight reels</li><li>Aerial & drone footage</li><li>Social media content</li></ul>
+    <span class="service-link">Explore service →</span>
+  </div>
+  <div class="service-card" data-category="visual">
+    <div class="service-card-number">02</div><div class="service-icon-wrap">📸</div>
+    <div class="service-tag">Visual Production</div><h3 class="service-title">Editorial Photography</h3>
+    <p class="service-desc">Studio and on-location photography with an editorial eye. Every frame is intentional.</p>
+    <ul class="service-features"><li>Brand & product photography</li><li>Corporate portraits</li><li>Event coverage</li><li>Architectural & interior</li><li>Campaign photography</li></ul>
+    <span class="service-link">Explore service →</span>
+  </div>
+  <div class="service-card" data-category="brand">
+    <div class="service-card-number">03</div><div class="service-icon-wrap">✦</div>
+    <div class="service-tag">Brand & Design</div><h3 class="service-title">Brand Identity</h3>
+    <p class="service-desc">Strategic visual identity systems built to last — brand languages that set you apart.</p>
+    <ul class="service-features"><li>Logo design & guidelines</li><li>Brand strategy & positioning</li><li>Color & typography systems</li><li>Brand collateral design</li><li>Brand audit & refresh</li></ul>
+    <span class="service-link">Explore service →</span>
+  </div>
+  <div class="service-card" data-category="brand">
+    <div class="service-card-number">04</div><div class="service-icon-wrap">🎨</div>
+    <div class="service-tag">Brand & Design</div><h3 class="service-title">Graphic Design</h3>
+    <p class="service-desc">From print to digital — visual assets that communicate your brand with precision and elegance.</p>
+    <ul class="service-features"><li>Marketing materials & print</li><li>Social media templates</li><li>Presentation design</li><li>Packaging & labels</li><li>Infographics & reports</li></ul>
+    <span class="service-link">Explore service →</span>
+  </div>
+  <div class="service-card" data-category="strategy">
+    <div class="service-card-number">05</div><div class="service-icon-wrap">📊</div>
+    <div class="service-tag">Strategy</div><h3 class="service-title">Marketing Strategy</h3>
+    <p class="service-desc">Data-driven strategies that amplify your brand reach across all platforms.</p>
+    <ul class="service-features"><li>Content strategy & planning</li><li>Social media management</li><li>Campaign development</li><li>Audience targeting</li><li>Performance analytics</li></ul>
+    <span class="service-link">Explore service →</span>
+  </div>
+  <div class="service-card" data-category="event">
+    <div class="service-card-number">06</div><div class="service-icon-wrap">📡</div>
+    <div class="service-tag">Events & Live</div><h3 class="service-title">Livestreaming</h3>
+    <p class="service-desc">Professional multi-camera livestreaming for corporate events and hybrid conferences.</p>
+    <ul class="service-features"><li>Multi-camera production</li><li>Real-time switching & direction</li><li>Platform integration</li><li>Live graphics & overlays</li><li>Post-event recording</li></ul>
+    <span class="service-link">Explore service →</span>
+  </div>
+  <div class="service-card" data-category="event" style="grid-column:span 3;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+    <div>
+      <div class="service-card-number">07</div><div class="service-icon-wrap">🎪</div>
+      <div class="service-tag">Events & Live</div><h3 class="service-title">Event Coverage</h3>
+      <p class="service-desc">Full-day creative coverage for corporate events, gala dinners, product launches, and weddings. We capture every moment that matters.</p>
+      <ul class="service-features"><li>Full-day photo + video coverage</li><li>Same-day highlight edits</li><li>Behind-the-scenes content</li><li>Social media ready cuts</li></ul>
+      <div style="margin-top:32px;display:flex;gap:12px">
+        <button class="btn btn-primary">Book Event Coverage</button>
+        <button class="btn btn-ghost">View Past Events</button>
+      </div>
+    </div>
+    <div style="background:rgba(129,11,56,0.06);border:1px solid rgba(129,11,56,0.15);border-radius:16px;padding:40px;text-align:center">
+      <div style="font-family:'Playfair Display',serif;font-size:56px;font-weight:500;color:#F5EDE3;line-height:1;margin-bottom:8px">50+</div>
+      <div style="font-size:12px;color:rgba(245,237,227,0.4);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:32px">Events covered in 2024</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div><div style="font-family:'Playfair Display',serif;font-size:28px;color:#C4638C">98%</div><div style="font-size:11px;color:rgba(245,237,227,0.35);margin-top:4px">Client satisfaction</div></div>
+        <div><div style="font-family:'Playfair Display',serif;font-size:28px;color:#C4638C">24h</div><div style="font-size:11px;color:rgba(245,237,227,0.35);margin-top:4px">Highlight delivery</div></div>
+        <div><div style="font-family:'Playfair Display',serif;font-size:28px;color:#C4638C">10+</div><div style="font-size:11px;color:rgba(245,237,227,0.35);margin-top:4px">Luxury venues</div></div>
+        <div><div style="font-family:'Playfair Display',serif;font-size:28px;color:#C4638C">5★</div><div style="font-size:11px;color:rgba(245,237,227,0.35);margin-top:4px">Average rating</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="process">
+  <div class="process-title">How we work</div>
+  <div class="process-steps">
+    <div class="process-step"><div class="process-num">01</div><div class="process-step-title">Discovery</div><div class="process-step-desc">We learn your brand, goals, and vision in a focused briefing session</div></div>
+    <div class="process-step"><div class="process-num">02</div><div class="process-step-title">Strategy</div><div class="process-step-desc">We develop a creative concept and production plan tailored to you</div></div>
+    <div class="process-step"><div class="process-num">03</div><div class="process-step-title">Production</div><div class="process-step-desc">Our team executes with precision — on time, on brief, on brand</div></div>
+    <div class="process-step"><div class="process-num">04</div><div class="process-step-title">Delivery</div><div class="process-step-desc">Final assets delivered with revisions included and full usage rights</div></div>
+  </div>
+</div>
+
+<section class="cta">
+  <div class="cta-glow"></div>
+  <div style="position:relative;z-index:1">
+    <div class="cta-badge"><span class="cta-dot"></span> Now accepting projects</div>
+    <h2 class="cta-title">Ready to start your<br><em>next project?</em></h2>
+    <p class="cta-sub">Tell us about your vision and we'll craft the perfect creative solution for your brand.</p>
+    <div class="cta-btns">
+      <button class="btn btn-primary btn-lg">Book a Free Consultation</button>
+      <button class="btn btn-secondary btn-lg">View Our Work</button>
+    </div>
+    <p style="font-size:13px;color:rgba(245,237,227,0.28);margin-top:24px">or email us at <a href="mailto:alhadadd@mediareflection.com" style="color:#C4638C">alhadadd@mediareflection.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="https://mahmoed-alhadadd.github.io/mr-preview/my%20new%20logo.png" alt="Media Reflection"></div>
+      <p class="footer-tagline">Convert Idea to Reality</p>
+      <p class="footer-desc">Visual storytelling studio based in Kuala Lumpur. We craft cinematic content for brands that mean business.</p>
+      <span class="footer-city">Kuala Lumpur, Malaysia</span>
+    </div>
+    <div class="footer-links">
+      <div><div class="footer-group-lbl">Services</div><a class="footer-link" href="#">Videography</a><a class="footer-link" href="#">Photography</a><a class="footer-link" href="#">Branding</a><a class="footer-link" href="#">Events</a></div>
+      <div><div class="footer-group-lbl">Company</div><a class="footer-link" href="#">About</a><a class="footer-link" href="index.html">Work</a><a class="footer-link" href="#">Process</a><a class="footer-link" href="#">Contact</a></div>
+      <div><div class="footer-group-lbl">Connect</div><a class="footer-link" href="#">Instagram</a><a class="footer-link" href="#">LinkedIn</a><a class="footer-link" href="#">Behance</a><a class="footer-link" href="#">WhatsApp</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Media Reflection. All rights reserved.</span>
+    <span class="footer-copy">mediareflection.com</span>
+  </div>
+</footer>
+
+<script>
+function filterCards(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('[data-category]').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
